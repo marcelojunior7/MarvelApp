@@ -7,8 +7,8 @@ target 'MarvelApp' do
 
   # Pods for MarvelApp
   
-  pod 'Alamofire',
-  pod 'SwiftyJSON',
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
   
   target 'MarvelAppTests' do
     inherit! :search_paths
