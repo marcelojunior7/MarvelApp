@@ -6,4 +6,8 @@
 //  Copyright © 2017 Marcelo. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class MainCollectionViewCell: UICollectionViewCell {
+    
+}

@@ -6,4 +6,22 @@
 //  Copyright © 2017 Marcelo. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension UIImage {
+    class func list() -> UIImage? {
+        return UIImage(named: "iconList")
+    }
+    
+    class func grid() -> UIImage? {
+        return UIImage(named: "iconGrid")
+    }
+    
+    class func filterFilled() -> UIImage? {
+        return UIImage(named: "iconFilterFilled")
+    }
+    
+    class func filterEmpty() -> UIImage? {
+        return UIImage(named: "iconFilterHollow")
+    }
+}

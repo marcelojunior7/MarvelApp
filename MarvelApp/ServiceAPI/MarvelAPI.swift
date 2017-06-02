@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+class MarvelAPI : NSObject {
+ 
+    func characters(name:String? = nil, success:((_ characters:[Character]) -> Void), error:(() -> Void)) {
+        
+    }
+
+}
