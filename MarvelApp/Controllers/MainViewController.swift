@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class MainViewController: UIViewController {
     
@@ -15,13 +16,16 @@ class MainViewController: UIViewController {
     var isGridView = true
     var isFiltering = false
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         updateModeView()
+        requestCharacters()
     }
     
     //MARK: UI
@@ -29,7 +33,7 @@ class MainViewController: UIViewController {
     func setupUI() {
         self.navigationItem.title = "Marvel"
         let modeView = UIBarButtonItem(image: UIImage.grid(), style: .plain, target: self, action: #selector(changeModeView(sender:)))
-        self.navigationItem.rightBarButtonItems = [modeView]
+        self.navigationItem.rightBarButtonItem = modeView
     }
     
     func updateModeView(_ sender : UIBarButtonItem? = nil) {
@@ -56,15 +60,50 @@ class MainViewController: UIViewController {
         updateModeView(sender)
     }
     
+    func showDetails(character:Character) {
+        searchBar.resignFirstResponder()
+        navigationController?.pushViewController(DetailsViewController.instance(character: character), animated: true)
+    }
+    
     //MARK: service
     
-    func requestCharacters() {
-        marvelAPI.characters(success: { characters in
+    func requestCharacters(name:String? = nil) {
+        showSpinner()
+        marvelAPI.characters(name: name, success: { characters in
             self.characters = characters
             self.reloadData()
-        }) {
-            
+            self.hideSpinner()
+        }) { error in
+            self.hideSpinner()
         }
+    }
+    
+    //MARK: helpers
+    
+    func showSpinner() {
+        activityIndicator.startAnimating()
+        tableView.isHidden = true
+        collectionView.isHidden = true
+    }
+    
+    func hideSpinner() {
+        activityIndicator.stopAnimating()
+        tableView.isHidden = false
+        collectionView.isHidden = false
+    }
+}
+
+extension MainViewController : UISearchBarDelegate {
+    //MARK: searchbar
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        requestCharacters(name: searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        requestCharacters()
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
     }
 }
 
@@ -78,11 +117,15 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MainTableViewCell
+        let character = characters[indexPath.row]
+        cell.labelTitle.text = character.name
+        cell.labelDescription.text = character.descriptionBio
+        cell.imageMain.af_setImage(withURL:URL(string: character.thumbnail?.fullPath() ?? "")!, placeholderImage: UIImage.placeholder())
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        showDetails(character: characters[indexPath.row])
     }
 }
 
@@ -96,10 +139,14 @@ extension MainViewController : UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MainCollectionViewCell
+        let character = characters[indexPath.row]
+        cell.labelTitle.text = character.name
+        cell.imageBackground.af_setImage(withURL:URL(string: character.thumbnail?.fullPath() ?? "")!, placeholderImage: UIImage.placeholder())
+        cell.imageMain.af_setImage(withURL:URL(string: character.thumbnail?.fullPath() ?? "")!, placeholderImage: UIImage.placeholder())
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        showDetails(character: characters[indexPath.item])
     }
 }

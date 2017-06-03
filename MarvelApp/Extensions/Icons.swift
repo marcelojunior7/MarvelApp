@@ -17,11 +17,7 @@ extension UIImage {
         return UIImage(named: "iconGrid")
     }
     
-    class func filterFilled() -> UIImage? {
-        return UIImage(named: "iconFilterFilled")
-    }
-    
-    class func filterEmpty() -> UIImage? {
-        return UIImage(named: "iconFilterHollow")
+    class func placeholder() -> UIImage? {
+        return UIImage(named: "placeholder")
     }
 }

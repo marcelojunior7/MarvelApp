@@ -22,6 +22,9 @@
 		9C1C6A401EE1FEA30079D119 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A3F1EE1FEA30079D119 /* MainCollectionViewCell.swift */; };
 		9C1C6A421EE201C90079D119 /* MarvelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A411EE201C90079D119 /* MarvelAPI.swift */; };
 		9C1C6A441EE208830079D119 /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A431EE208830079D119 /* Icons.swift */; };
+		9C1C6A461EE2252C0079D119 /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A451EE2252C0079D119 /* Thumbnail.swift */; };
+		9C1C6A481EE256150079D119 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A471EE256150079D119 /* DetailsViewController.swift */; };
+		9C1C6A4A1EE2649C0079D119 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C6A491EE2649C0079D119 /* Item.swift */; };
 		AC15545CA57FAA584F7B8023 /* Pods_MarvelAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AF8FDBB27D82AC82C2046E /* Pods_MarvelAppUITests.framework */; };
 		AD8CDFDABB08C568B8A0CE9B /* Pods_MarvelAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C041031881E460F125940DB2 /* Pods_MarvelAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,9 @@
 		9C1C6A3F1EE1FEA30079D119 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		9C1C6A411EE201C90079D119 /* MarvelAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAPI.swift; sourceTree = "<group>"; };
 		9C1C6A431EE208830079D119 /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		9C1C6A451EE2252C0079D119 /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		9C1C6A471EE256150079D119 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		9C1C6A491EE2649C0079D119 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B6EF3D3A3D646ED9D5D62322 /* Pods-MarvelApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelApp/Pods-MarvelApp.release.xcconfig"; sourceTree = "<group>"; };
 		BB11F46F4D681961E8FE9ABC /* Pods-MarvelAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MarvelAppUITests/Pods-MarvelAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C041031881E460F125940DB2 /* Pods_MarvelAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				9C1C6A241EE1EBFF0079D119 /* MainViewController.swift */,
+				9C1C6A471EE256150079D119 /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				9C1C6A3B1EE1FE540079D119 /* Character.swift */,
+				9C1C6A451EE2252C0079D119 /* Thumbnail.swift */,
+				9C1C6A491EE2649C0079D119 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,9 +539,12 @@
 				9C1C6A441EE208830079D119 /* Icons.swift in Sources */,
 				9C1C6A361EE1EC3C0079D119 /* Colors.swift in Sources */,
 				9C1C6A301EE1EBFF0079D119 /* MainViewController.swift in Sources */,
+				9C1C6A461EE2252C0079D119 /* Thumbnail.swift in Sources */,
+				9C1C6A4A1EE2649C0079D119 /* Item.swift in Sources */,
 				9C1C6A3C1EE1FE540079D119 /* Character.swift in Sources */,
 				9C1C6A421EE201C90079D119 /* MarvelAPI.swift in Sources */,
 				9C1C6A3E1EE1FE980079D119 /* MainTableViewCell.swift in Sources */,
+				9C1C6A481EE256150079D119 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +703,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Marcelo.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -705,6 +718,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Marcelo.MarvelApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
