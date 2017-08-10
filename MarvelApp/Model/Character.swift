@@ -23,7 +23,6 @@ class Character : NSObject {
     
     init(json : JSON) {
         super.init()
-        
         id = json["id"].int ?? id
         name = json["name"].string ?? name
         descriptionBio = json["description"].string ?? descriptionBio
@@ -32,7 +31,7 @@ class Character : NSObject {
         series = json["series"]["items"].arrayValue.map({Item(json:$0)})
         stories = json["stories"]["items"].arrayValue.map({Item(json:$0)})
         events = json["events"]["items"].arrayValue.map({Item(json:$0)})
-        if let url = json["urls"][0]["url"].string {
+        if let url = json["urls"].array?.first?["url"].string {
             linkDetails = URL(string: url)
         }
     }

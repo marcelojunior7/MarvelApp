@@ -88,13 +88,12 @@ class MainViewController: UIViewController {
     
     func hideSpinner() {
         activityIndicator.stopAnimating()
-        tableView.isHidden = false
-        collectionView.isHidden = false
+        tableView.isHidden = isGridView
+        collectionView.isHidden = !isGridView
     }
 }
 
 extension MainViewController : UISearchBarDelegate {
-    //MARK: searchbar
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         requestCharacters(name: searchBar.text)
@@ -108,8 +107,6 @@ extension MainViewController : UISearchBarDelegate {
 }
 
 extension MainViewController : UITableViewDataSource, UITableViewDelegate {
-    
-    //MARK: tableView
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return characters.count
@@ -130,8 +127,6 @@ extension MainViewController : UITableViewDataSource, UITableViewDelegate {
 }
 
 extension MainViewController : UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    //MARK: collectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return characters.count

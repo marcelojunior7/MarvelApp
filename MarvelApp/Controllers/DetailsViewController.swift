@@ -79,8 +79,6 @@ class DetailsViewController: UIViewController {
 
 extension DetailsViewController : UITableViewDataSource, UITableViewDelegate {
     
-    //MARK: tableView
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items().count
     }
